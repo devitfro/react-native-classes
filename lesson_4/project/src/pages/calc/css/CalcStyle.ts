@@ -11,22 +11,24 @@ const CalcStyle = StyleSheet.create({
     justifyContent: 'space-between',
   },
   expression: {
-    flex: 0.5,
+    flex: 0.7,
     textAlign: 'right',
-    color: '#bbb',
+    // color: '#bbb',
     marginTop: 24,
     marginRight: 14,
     fontSize: 20,
+    marginBottom: 12,
+    textAlignVertical: 'bottom',
+    color: textColor
   },
   result: {
     flex: 2,
     color: textColor,
-    // fontSize: 50,
     textAlign: 'right',
     marginRight: 14,
   },
   memoryRow: {
-    flex: 0.8,
+    flex: 0.9,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -39,9 +41,11 @@ const CalcStyle = StyleSheet.create({
   }, 
   // landscape styles
   containerResExpMem: {
+    flex: 2,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     backgroundColor: '#444',
   },
   containerExpMem: {
