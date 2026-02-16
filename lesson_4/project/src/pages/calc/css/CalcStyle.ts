@@ -11,9 +11,8 @@ const CalcStyle = StyleSheet.create({
     justifyContent: 'space-between',
   },
   expression: {
-    flex: 0.7,
+    flex: 0.8,
     textAlign: 'right',
-    // color: '#bbb',
     marginTop: 24,
     marginRight: 14,
     fontSize: 20,
@@ -28,7 +27,7 @@ const CalcStyle = StyleSheet.create({
     marginRight: 14,
   },
   memoryRow: {
-    flex: 0.9,
+    flex: 1,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -41,7 +40,7 @@ const CalcStyle = StyleSheet.create({
   }, 
   // landscape styles
   containerResExpMem: {
-    flex: 2,
+    flex: 3,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
