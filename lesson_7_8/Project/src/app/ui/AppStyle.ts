@@ -36,9 +36,6 @@ const AppStyle = StyleSheet.create({
     flex: 1,
     width: '100%',
     backgroundColor: '#385170',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
   },
   navBar: { // footer
     width: '100%',
