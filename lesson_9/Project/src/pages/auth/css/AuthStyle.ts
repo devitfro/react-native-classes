@@ -10,11 +10,16 @@ const AuthStyle = StyleSheet.create({
     marginTop: 120.0,
     marginLeft: 20.0,
     marginRight: 20.0,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    // backgroundColor: 'pink'
   },
   authRow: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     marginHorizontal: 30.0,
     marginVertical: 7.0,
   },
@@ -43,9 +48,67 @@ const AuthStyle = StyleSheet.create({
     backgroundColor: '#209a94',
   }, 
   authButtonText: {
-    // color: textColor,
     textAlign: 'center',
   },
+  userContainer: {
+    padding: 10.0,
+    borderColor: textColor,
+    borderRadius: 10.0,
+    borderWidth: 1,
+    marginTop: 120.0,
+    marginLeft: 20.0,
+    marginRight: 20.0,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start', 
+    justifyContent: 'space-around',
+  },
+  userRow: {
+    width: '100%',
+  },
+  userRowText: {
+    padding: 10.0,
+    marginBottom: 10.0,
+    fontSize: 14.0,
+    color: textColor,
+    // textDecorationLine: 'underline',
+    // textDecorationColor: textColor,
+  },
+  userButtonRow: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    padding: 0
+  },
+  userButton: {
+    borderWidth: 1.0,
+    borderColor: textColor,
+    borderRadius: 5.0,
+    padding: 20.0,
+    backgroundColor: '#209a94',
+    margin: 25.0,
+    maxWidth: '50%'
+  }, 
+  userRowInput: {
+    borderWidth: 1.0,
+    borderColor: textColor,
+    borderRadius: 5.0,
+    flex: 3,
+    maxWidth: '55%',
+    minWidth: '55%',
+    color: textColor,
+    padding: 10.0,
+  },
+  addUserInfoContainer: {
+    width: '100%',
+  },
+  addUserInfoRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  }
 });
 
 export default AuthStyle;
