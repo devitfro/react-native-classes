@@ -31,6 +31,23 @@ export default function Anim() {
     })
     ]).start();
   };
+
+  const scaleValue = useRef(new Animated.Value(1)).current;
+
+  const scalePress = () => {
+    Animated.sequence([
+      Animated.timing(scaleValue, {
+        toValue: 1.25,
+        useNativeDriver: true,
+        duration: 300,
+      }),
+      Animated.timing(scaleValue, {
+        toValue: 1.0,
+        useNativeDriver: true,
+        duration: 300,
+      }),
+    ]).start();
+  };
   
   return(
     <View style={AnimStyle.animLayout}>
@@ -56,7 +73,15 @@ export default function Anim() {
       </View>
 
       <View style={AnimStyle.animRow}>
-        <View style={AnimStyle.animItem}></View>
+        <View style={AnimStyle.animItem}>
+          {/* <Pressable onPress={scalePress}>
+            <Animated.View style={{transform: [{scaleX: scaleValue}, {scaleY: scaleValue}]}}>
+              <View style={AnimStyle.animBlock}></View>
+            </Animated.View>
+          </Pressable> */}
+          <Text style={AnimStyle.animLabel}>Scale (масштаб)</Text>
+        </View>
+
         <View style={AnimStyle.animItem}></View>
       </View>
 
