@@ -1,9 +1,8 @@
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, View , ImageSourcePropType, ScrollView} from "react-native";
+import { useContext } from "react";
+
 import HomeStyle from "./css/HomeStyle";
-import { Touchable } from "react-native";
-import { useCallback, useContext } from "react";
 import AppContext from "../../features/context/AppContext";
-import { ImageSourcePropType } from "react-native";
 
 export default function Home() {
   return (
@@ -11,6 +10,8 @@ export default function Home() {
     <MenuItem title="Калькулятор" slug="calc" imgSrc={require('../../features/assets/img/calc.png')} />
     <MenuItem title="Жести: cвайпи" slug="swipe" imgSrc={require('../../features/assets/img/swipe.png')} />
     <MenuItem title="Анімації" slug="anim" imgSrc={require('../../features/assets/img/anim.png')} />
+    <MenuItem title="Обмін валют" slug="rates" imgSrc={require('../../features/assets/img/rates.png')} />
+    <MenuItem title="Повідомлення" slug="messages" imgSrc={require('../../features/assets/img/message.png')} />
   </View>
   )
 };

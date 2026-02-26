@@ -7,15 +7,14 @@ const HomeStyle = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    // backgroundColor: 'green'
   },
   homeLabel: {
     color: textColor,
-    fontSize: 28.0,
+    fontSize: 22.0,
   },
   homeImage: {
-    width: 50,
-    height: 50,
+    width: 45,
+    height: 45,
     tintColor: textColor,
     marginRight: 20,
   },
@@ -28,7 +27,7 @@ const HomeStyle = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 12,
     marginHorizontal: 20.0,
-    padding: 20.0,
+    padding: 10.0,
     minWidth: '80%',
     marginBottom: 20,
   }

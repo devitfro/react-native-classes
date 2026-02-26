@@ -13,7 +13,17 @@ const AuthStyle = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    // backgroundColor: 'pink'
+  },
+  pageSwitch: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 10.0,
+    marginBottom: 20.0,
+  },
+  pageSwitchButton: {
+    flex: 1, 
+    marginHorizontal: 10.0,
   },
   authRow: {
     display: 'flex',
@@ -36,12 +46,16 @@ const AuthStyle = StyleSheet.create({
     minWidth: '65%',
     color: textColor,
     padding: 10.0,
+    minHeight: 42.0,
+    paddingHorizontal: 5.0,
+    paddingVertical: 10.0
   },
   authButton: {
     borderWidth: 1.0,
     borderColor: textColor,
     borderRadius: 5.0,
-    maxWidth: '45%',
+    maxWidth: '55%',
+    minWidth: '55%',
     marginHorizontal: '25%',
     marginTop: 25.0,
     padding: 20.0,
@@ -60,7 +74,7 @@ const AuthStyle = StyleSheet.create({
     marginRight: 20.0,
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-start', 
+    alignItems: 'center', 
     justifyContent: 'space-around',
   },
   userRow: {

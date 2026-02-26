@@ -12,8 +12,7 @@ const AppStyle = StyleSheet.create({
   },
   appBar: { // header
     paddingVertical: 10, // dp - (dip) - density (independed) pixelx
-    backgroundColor: '#ececec',
-    // backgroundColor: 'pink',
+    backgroundColor: '#e7eaf6',
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
@@ -21,7 +20,7 @@ const AppStyle = StyleSheet.create({
     justifyContent: 'space-between',
   },
   appBackIcon: {
-    color: textTitleColor,
+    color: '#385170',
     fontWeight: 700,
     fontSize: 25,
     marginLeft: 20,
@@ -35,11 +34,12 @@ const AppStyle = StyleSheet.create({
   main: { 
     flex: 1,
     width: '100%',
-    backgroundColor: '#385170',
+    // backgroundColor: '#385170',
+    backgroundColor: '#5585b5',
   },
   navBar: { // footer
     width: '100%',
-    backgroundColor: '#ececec',
+    backgroundColor: '#e7eaf6',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-evenly',

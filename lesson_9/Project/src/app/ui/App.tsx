@@ -14,6 +14,9 @@ import Auth from "../../pages/auth/Auth";
 import Rates from "../../pages/rates/Rates";
 import '../../shared/extensions/DateExtensions';
 import '../../shared/extensions/NumberExtensions';
+import ModalView from "./ModalView";
+import IModalData from "../../features/interfaces/modal/IModalData";
+import Messages from "../../pages/messages/Messages";
 
 export default function App() {
   const {width, height} = useWindowDimensions();
@@ -21,6 +24,7 @@ export default function App() {
   const [history, setHistory] = useState<Array<IRouteInformation>>([]);
   const [page, setPage] = useState<IRouteInformation>({slug: 'home'});
   const [user, setUser] = useState<IUser|null>(null);
+  const [modalData, setModalData] = useState<IModalData|null>(null);
 
   const navigate = (route:IRouteInformation) => {
     console.log(history);
@@ -52,6 +56,10 @@ export default function App() {
     return () => { listener.remove(); };
   }, []);
 
+  const showModal = (data:IModalData) => {
+    setModalData(data);
+  };
+
   return (
     <SafeAreaProvider>
       <SafeAreaView edges={['top', 'bottom']} style={AppStyle.container}>
@@ -64,9 +72,10 @@ export default function App() {
           </View>
         }
 
-        <AppContext.Provider value={{navigate, user, setUser}}>
+        <AppContext.Provider value={{navigate, user, setUser, showModal}}>
           <View style={AppStyle.main}>
           { user == null || page.slug == 'auth' ? <Auth />
+            : page.slug == 'messages' ? <Messages />
             : page.slug == 'anim' ? <Anim />
             : page.slug == 'calc' ? <Calc />
             : page.slug == 'home'? <Home />
@@ -83,31 +92,34 @@ export default function App() {
               onPress={() => navigate({slug: 'home'})}>
               <Image 
                 source={require('../../features/assets/img/home.png')} 
-                style={{width:28, height:32, tintColor:'grey'}}/>
+                style={{width:28, height:32, tintColor:'#385170'}}/>
             </TouchableOpacity>
 
             <TouchableOpacity 
               onPress={() => navigate({slug: 'calc'})}>
               <Image 
                 source={require('../../features/assets/img/calc.png')} 
-                style={{width:32, height:32, tintColor:'grey'}}/>
+                style={{width:32, height:32, tintColor:'#385170'}}/>
             </TouchableOpacity>
 
              <TouchableOpacity 
               onPress={() => navigate({slug: 'rates'})}>
               <Image 
                 source={require('../../features/assets/img/rates.png')} 
-                style={{width:32, height:32, tintColor:'grey'}}/>
+                style={{width:32, height:32, tintColor:'#385170'}}/>
             </TouchableOpacity>
 
             <TouchableOpacity 
               onPress={() => navigate({slug: 'auth'})}>
               <Image 
                 source={require('../../features/assets/img/user.png')} 
-                style={{width:34, height:34, tintColor:'grey'}}/>
+                style={{width:34, height:34, tintColor:'#385170'}}/>
             </TouchableOpacity>
           </View>
         }
+
+        <ModalView modalData={modalData} setModalData={setModalData} />
+
       </SafeAreaView>
     </SafeAreaProvider>
   )
