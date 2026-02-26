@@ -13,11 +13,12 @@ export const ButtonTypes = {
 
 export type ButtonTypes = typeof ButtonTypes[keyof typeof ButtonTypes];
 
-export function FirmButton({buttonType, title, action, style} : {
+export function FirmButton({buttonType, title, action, style, isMultiRow = false} : {
   buttonType?: ButtonTypes, 
   title: string, 
   action?:() => void,
-  style?: StyleProp<ViewStyle>
+  style?: StyleProp<ViewStyle>,
+  isMultiRow?: boolean,
 }) {
   if (!buttonType) {
     buttonType = ButtonTypes.primary;
@@ -26,11 +27,14 @@ export function FirmButton({buttonType, title, action, style} : {
   return(
     <TouchableOpacity
       onPress={() => { if(action) action(); }}
-      style={[styles.firmButton, 
-        (buttonType == ButtonTypes.danger ? styles.danger 
-        : buttonType == ButtonTypes.success ? styles.succes
-        : styles.primary), style
-        ]}
+      style={[
+        styles.firmButton,
+          (buttonType === ButtonTypes.danger ? styles.danger
+          : buttonType === ButtonTypes.success ? styles.success
+          : styles.primary),
+          isMultiRow ? { width: "48%" } : { minWidth: 80 },
+          style
+      ]}
     >
       <Text style={styles.buttonText}>{title}</Text>
     </TouchableOpacity>
@@ -48,7 +52,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#38598b',
     borderColor: '#576A8F',
   },
-  succes: {
+  success: {
     backgroundColor: '#6CA651',
     borderColor: '#839705',
   },

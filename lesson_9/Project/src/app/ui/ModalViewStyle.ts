@@ -50,6 +50,11 @@ const ModalViewStyle = StyleSheet.create({
     justifyContent: 'space-between',
     gap: 5.0,
   },
+  buttonsMultiRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
 });
 
 export default ModalViewStyle;

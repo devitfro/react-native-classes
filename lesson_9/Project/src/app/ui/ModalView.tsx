@@ -6,7 +6,9 @@ import { ButtonTypes, FirmButton } from "../../features/ui/button/FirmButton";
 
 export default function ModalView({modalData, setModalData} 
   : {modalData:IModalData|null, setModalData:React.Dispatch<React.SetStateAction<IModalData | null>>}) {
-  const [modalVisible, setModalVisible] = useState(false);
+
+  const buttonsCount = modalData?.buttons?.length ?? 0;
+  const isMultiRow = buttonsCount > 3;
    
   return <Modal
       animationType="slide"
@@ -25,18 +27,22 @@ export default function ModalView({modalData, setModalData}
           <Text style={styles.modalText}>{modalData?.message}</Text>
 
           {modalData && (modalData.buttons?.length ?? 0) > 0 && 
-            <View style={styles.buttonsRow}>
+            <View style={[
+              styles.buttonsRow, 
+              isMultiRow && styles.buttonsMultiRow
+            ]}>
               {modalData.buttons!.map((b, i) => 
-              <FirmButton 
-                key={i} 
-                buttonType={b.buttonType} 
-                title={b.title}
-                action={() => {
-                  if(b.action) {
-                    b.action();
-                  }
-                  setModalData(null);
-                }}/>)}
+                <FirmButton
+                  key={i}
+                  buttonType={b.buttonType}
+                  title={b.title}
+                  isMultiRow={isMultiRow}
+                  action={() => {
+                    if(b.action) b.action();
+                    setModalData(null);
+                  }}
+                />
+              )}
             </View>
           }
         
