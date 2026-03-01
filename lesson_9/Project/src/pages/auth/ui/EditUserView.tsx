@@ -81,7 +81,6 @@ export default function EditUserView() {
       </View>
 
       <View style={AuthStyle.userButtonRow}>
-
         <TouchableOpacity
           style={[
             AuthStyle.userButton, { opacity: isValid ? 1 : 0.5 }
@@ -93,11 +92,7 @@ export default function EditUserView() {
             Зберегти
           </Text>
         </TouchableOpacity>
-
       </View>
-
-
-
     </View>
   );
 }

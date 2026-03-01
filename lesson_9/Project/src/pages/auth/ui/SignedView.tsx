@@ -26,7 +26,6 @@ export default function SignedView() {
       )}
 
       <View style={AuthStyle.userButtonRow}>
-
         <TouchableOpacity style={AuthStyle.userButton} onPress={() => setIsEditing(!isEditing)}>
           <Text style={[AuthStyle.authButtonText, { color: textColor }]}>
             {isEditing ? "Скасувати" : "Редагувати"}
