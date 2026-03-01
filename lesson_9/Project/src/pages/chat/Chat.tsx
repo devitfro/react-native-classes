@@ -1,43 +1,96 @@
-import { Image, Text, TextInput, Touchable, TouchableOpacity, View } from "react-native";
+import { Image, KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import ChatStyle from "./css/ChatStyle";
-import { ScrollView } from "react-native";
-import { textColor } from "../../features/values/colors";
-import { useEffect, useState } from "react";
-import ICalcButtonData from "../calc/ui/button/ICalcButtonData";
-import IChatMessage from "./orm/IChatMessage";
+import { useContext, useEffect, useRef, useState } from "react";
+import IChatMessage from "./orm/IChatPost";
 import ChatApi from "./api/ChatApi";
+import AppContext from "../../features/context/AppContext";
+import { textColor } from "../../features/values/colors";
 
 export default function Chat() {
   // chat.sodes.studio/post
-  const [messages, setMessages] = useState<Array<IChatMessage>>([]);
+  const [posts, setPosts] = useState<Array<IChatMessage>>([]);
+  const [postText, setPostText] = useState<string>("");
+  const {showModal, user} = useContext(AppContext);
+  const scrollRef = useRef<ScrollView>(null);
+
+  const loadPosts = () => ChatApi.getMessages(user?.token).then(list => {
+    list.sort((a,b) => a.postAt.getTime() - b.postAt.getTime());
+    setPosts(list);
+    console.log("loadPosts");
+  }); 
+
   useEffect(() => {
-    ChatApi.getMessages().then(setMessages);
-  }, [])
+    const timer = setInterval(loadPosts, 1000);
+    loadPosts();
 
-   return (
-    <View style={ChatStyle.chatContainer}>
-      <ScrollView style={ChatStyle.messagesScroller}>
-        <View style={ChatStyle.messagesContainer}>
-          {messages.map(m => 
-            <View key={m.post_id}>
-              <Text>{m.post_at.toDotted()}</Text>
-              <Text>{m.name}</Text>
-              <Text>{m.content}</Text>
-            </View>
-          )}
-        </View>
+    return () => clearInterval(timer);
+  }, []);
 
+  const onSendPress = () => {
+      console.log(postText);
+      const txt = postText.trim();
+      if(txt.length == 0) {
+          showModal({message: "Введіть повідомлення"});
+          return;
+      }
+      fetch("https://chat.sodes.studio/post", {
+          method: "POST",
+          headers: {
+              "Authorization": "Bearer " + user?.token
+          },
+          body: postText
+      }).then(r => r.json()).then(j => {
+          if(j.status.code == 200) {
+              loadPosts();
+              setPostText("");
+          }
+          else {
+              showModal({message: JSON.stringify(j)});
+          }
+      });
+  };
+
+  return <KeyboardAvoidingView 
+      style={ChatStyle.chatContainer} 
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}        
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 80}>
+
+      <ScrollView
+          ref={scrollRef} 
+          style={ChatStyle.messagesScroller}
+          onContentSizeChange={() => {
+              scrollRef.current?.scrollToEnd({ animated: true });
+          }}>
+          <View style={ChatStyle.messagesContainer}>
+              {posts.map(p => 
+              <View 
+                  key={p.postId} 
+                  style={p.user.id == user?.id ? ChatStyle.myPost : ChatStyle.post}>
+
+                  <Text>{p.postAt.toDotted()}</Text>
+                  <Text>{p.user.name}</Text>
+                  <Text>{p.content}</Text>
+
+              </View>)}
+          </View>
       </ScrollView>
 
       <View style={ChatStyle.sendBlock}>
-        <TextInput style={ChatStyle.sendInput} 
-                   placeholder="Введіть повідомлення"
-                   placeholderTextColor={textColor}/>
-        <TouchableOpacity style={ChatStyle.sendButton}>
-          <Image source={require('../../features/assets/img/send.png')} 
-          style={ChatStyle.sendButtonImage}/>
-        </TouchableOpacity>
+          <TextInput  
+              onChangeText={setPostText}
+              value={postText}
+              style={ChatStyle.sendInput} 
+              placeholder="Введіть повідомлення"
+              placeholderTextColor={textColor} />
+
+          <TouchableOpacity 
+              style={ChatStyle.sendButton}
+              onPress={onSendPress}>
+              <Image  
+                  style={ChatStyle.sendButtonImage}
+                  source={require('../../features/assets/img/send.png')} />
+          </TouchableOpacity>
       </View>
-    </View>
-   )
+  </KeyboardAvoidingView>;
 }
+

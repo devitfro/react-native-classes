@@ -1,7 +1,7 @@
 import IModalButton from "./IModalButton";
 
 export default interface IModalData {
-  title: string,
+  title?: string,
   message: string,
   buttons?: Array<IModalButton>,
 }

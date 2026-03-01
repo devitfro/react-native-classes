@@ -10,10 +10,8 @@ const ChatStyle = StyleSheet.create({
   messagesScroller: {
     flex: 1,
     backgroundColor: 'white',
-
   },
   messagesContainer: {
-
   },
   sendBlock: {
     width: '100%',
@@ -35,6 +33,36 @@ const ChatStyle = StyleSheet.create({
     width: 42.0, 
     height: 42.0, 
     tintColor: textColor
+  },
+  post: {
+    borderWidth: 1.0,
+    borderColor: "green",
+    backgroundColor: "lime",
+    borderBottomRightRadius: 10.0,
+    borderTopLeftRadius: 10.0,
+    borderTopRightRadius: 10.0,
+    marginLeft: 10.0,
+    marginVertical: 5.0,
+    marginRight: 40.0,
+    width: "auto",
+    alignSelf: "flex-start",
+    paddingVertical: 3.0,
+    paddingHorizontal: 10.0,
+  },
+  myPost: {
+    borderWidth: 1.0,
+    borderTopLeftRadius: 10.0,
+    borderTopRightRadius: 10.0,
+    borderColor: "darksteelblue",
+    backgroundColor: "steelblue",
+    borderBottomLeftRadius: 10.0,
+    marginLeft: 40.0,
+    marginRight: 10.0,
+    alignSelf: "flex-end",
+    width: "auto",
+    marginVertical: 5.0,
+    paddingVertical: 3.0,
+    paddingHorizontal: 10.0,
   },
  })
 
