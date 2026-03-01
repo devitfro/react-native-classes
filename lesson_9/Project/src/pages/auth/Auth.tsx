@@ -7,44 +7,12 @@ import AppContext from "../../features/context/AppContext";
 import { ButtonTypes, FirmButton } from "../../features/ui/button/FirmButton";
 import SignedUpView from "./ui/SignUpView";
 import SignedInView from "./ui/SignInView";
-
-function PageSwitchWidget({pageMode, setPageMode}: {pageMode:string, setPageMode:React.Dispatch<React.SetStateAction<string>>}) {
-  return(
-    <View style={AuthStyle.pageSwitch}>
-      <FirmButton title="Вхід" 
-                  style={AuthStyle.pageSwitchButton} 
-                  buttonType={pageMode == 'SignUp' ? ButtonTypes.primary : ButtonTypes.success}
-                  action={() => setPageMode('SignIn')}/>
-      <FirmButton title="Реєстрація" 
-                  style={AuthStyle.pageSwitchButton} 
-                  buttonType={pageMode == 'SignUp' ? ButtonTypes.success : ButtonTypes.primary}
-                  action={() => setPageMode('SignUp')} />
-    </View>
-  )
-}
-
-function SignedView() {
-  const {user, setUser} = useContext(AppContext);
-
-  const signOutClick = () => {
-    setUser(null);
-  };
-
-  return (
-    <View style={AuthStyle.userContainer}>
-        <View style={AuthStyle.userRow}>
-          <Text style={AuthStyle.userRowText}>Вітання, {user!.name}</Text>
-        </View>
-        <TouchableOpacity style={AuthStyle.userButton} onPress={signOutClick}>
-          <Text style={[AuthStyle.authButtonText, {color: textColor}]}>Вихід</Text>
-        </TouchableOpacity> 
-     </View>
-  );
-};
+import SignedView from "./ui/SignedView";
+import PageSwitchWidget from "./ui/PageSwitchWidget";
 
 export default function Auth() {
   const {user} = useContext(AppContext);
-  const [pageMode, setPageMode] = useState('SignUp');
+  const [pageMode, setPageMode] = useState('SignIn');
 
 return (!!user 
   ? <SignedView />

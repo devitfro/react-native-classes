@@ -74,7 +74,7 @@ const AuthStyle = StyleSheet.create({
     marginRight: 20.0,
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center', 
+    alignItems: 'flex-start', 
     justifyContent: 'space-around',
   },
   userRow: {
@@ -85,8 +85,6 @@ const AuthStyle = StyleSheet.create({
     marginBottom: 10.0,
     fontSize: 14.0,
     color: textColor,
-    // textDecorationLine: 'underline',
-    // textDecorationColor: textColor,
   },
   userButtonRow: {
     width: '100%',
@@ -94,7 +92,7 @@ const AuthStyle = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    padding: 0
+    padding: 0,
   },
   userButton: {
     borderWidth: 1.0,
@@ -102,27 +100,39 @@ const AuthStyle = StyleSheet.create({
     borderRadius: 5.0,
     padding: 20.0,
     backgroundColor: '#209a94',
-    margin: 25.0,
+    margin: 15.0,
     maxWidth: '50%'
   }, 
+
   userRowInput: {
     borderWidth: 1.0,
     borderColor: textColor,
     borderRadius: 5.0,
     flex: 3,
-    maxWidth: '55%',
-    minWidth: '55%',
+    // maxWidth: '55%',
+    // minWidth: '55%',
+    width: '100%',
     color: textColor,
     padding: 10.0,
+    marginLeft: 10.0,
   },
+  // edit
   addUserInfoContainer: {
     width: '100%',
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    gap: 15, 
   },
   addUserInfoRow: {
+    width: '100%', 
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-  }
+    justifyContent: 'flex-start',
+    marginBottom: 10,
+  },
 });
 
 export default AuthStyle;

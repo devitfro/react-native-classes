@@ -45,7 +45,6 @@ export default function ModalView({modalData, setModalData}
               )}
             </View>
           }
-        
         </View>
       </View>
   </Modal>

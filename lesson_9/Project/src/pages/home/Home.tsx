@@ -11,6 +11,7 @@ export default function Home() {
     <MenuItem title="Жести: cвайпи" slug="swipe" imgSrc={require('../../features/assets/img/swipe.png')} />
     <MenuItem title="Анімації" slug="anim" imgSrc={require('../../features/assets/img/anim.png')} />
     <MenuItem title="Обмін валют" slug="rates" imgSrc={require('../../features/assets/img/rates.png')} />
+    <MenuItem title="Чат" slug="chat" imgSrc={require('../../features/assets/img/chat.png')} />
     <MenuItem title="Повідомлення" slug="messages" imgSrc={require('../../features/assets/img/message.png')} />
   </View>
   )

@@ -36,7 +36,6 @@ const testUserFormData = {
 export default function SignedUpView({setPageMode}: {setPageMode:React.Dispatch<React.SetStateAction<string>>}) {
   const [userFormData, setUserFormData] = useState<IUserFormData>(testUserFormData);
   const [isOpen, setOpen] = useState<boolean>(false);
-  // const [isFormValid, setFormValid] = useState(false);
   const {showModal} = useContext(AppContext);
 
   const isFormValid = (): boolean => {

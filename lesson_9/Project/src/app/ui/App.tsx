@@ -17,6 +17,7 @@ import '../../shared/extensions/NumberExtensions';
 import ModalView from "./ModalView";
 import IModalData from "../../features/interfaces/modal/IModalData";
 import Messages from "../../pages/messages/Messages";
+import Chat from "../../pages/chat/Chat";
 
 export default function App() {
   const {width, height} = useWindowDimensions();
@@ -78,6 +79,7 @@ export default function App() {
             : page.slug == 'messages' ? <Messages />
             : page.slug == 'anim' ? <Anim />
             : page.slug == 'calc' ? <Calc />
+            : page.slug == 'chat' ? <Chat />
             : page.slug == 'home'? <Home />
             : page.slug == 'rates'? <Rates />
             : page.slug == 'swipe' ? <Swipe />
@@ -102,13 +104,20 @@ export default function App() {
                 style={{width:32, height:32, tintColor:'#385170'}}/>
             </TouchableOpacity>
 
+            <TouchableOpacity 
+              onPress={() => navigate({slug: 'chat'})}>
+              <Image 
+                source={require('../../features/assets/img/chat.png')} 
+                style={{width:34, height:34, tintColor:'#385170'}}/>
+            </TouchableOpacity>
+
              <TouchableOpacity 
               onPress={() => navigate({slug: 'rates'})}>
               <Image 
                 source={require('../../features/assets/img/rates.png')} 
                 style={{width:32, height:32, tintColor:'#385170'}}/>
             </TouchableOpacity>
-
+            
             <TouchableOpacity 
               onPress={() => navigate({slug: 'auth'})}>
               <Image 
